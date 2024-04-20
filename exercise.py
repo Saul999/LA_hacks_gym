@@ -3,7 +3,10 @@ import json
 import os
 from dotenv import load_dotenv
 
+load_dotenv(".env")
+
 API_KEY = os.environ.get("FITNESS_API_KEY")
+
 print(API_KEY)
 
 muscle_group = ["abdominals",

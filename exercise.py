@@ -1,7 +1,10 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
-FITNESS_API_KEY = "X0rncsMNp0NufqOIlTRNYw==rrOHqaeR3ZFjbkSq"
+API_KEY = os.environ.get("FITNESS_API_KEY")
+print(API_KEY)
 
 muscle_group = ["abdominals",
                 "abductors",
@@ -27,7 +30,7 @@ def muscle_exercise(muscle, *training_type):  # Returns set of exercsies related
     """
     if muscle in muscle_group:
         api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
-        response = requests.get(api_url, headers={'X-Api-Key': FITNESS_API_KEY})
+        response = requests.get(api_url, headers={'X-Api-Key': API_KEY})
         if response.status_code == requests.codes.ok:
             data = json.loads(response.text)
             exercises_list = []

@@ -27,6 +27,59 @@ class FormSelectState1(rx.State):
         #print(type(self.schedule))
         # print(gemini(form_data))
 
+def render_table():
+    return rx.table.root(
+            rx.table.header(
+                rx.table.row(
+                    rx.table.column_header_cell("Sunday"),
+                    rx.table.column_header_cell("Monday"),
+                    rx.table.column_header_cell("Tuesday"),
+                    rx.table.column_header_cell("Wednesday"),
+                    rx.table.column_header_cell("Thursday"),
+                    rx.table.column_header_cell("Friday"),
+                    rx.table.column_header_cell("Saturday"),
+                ),
+            ),
+            rx.table.body(
+                rx.table.row(  # Sunday
+                    rx.table.cell("Danilo Sousa"),
+                    rx.table.cell("danilo@example.com"),
+                    rx.table.cell("Developer"),
+                ),
+                rx.table.row(  # Monday
+                    rx.table.cell("Danilo Sousa"),
+                    rx.table.cell("danilo@example.com"),
+                    rx.table.cell("Developer"),
+                ),
+                rx.table.row(  # Tuesday
+                    rx.table.cell("Danilo Sousa"),
+                    rx.table.cell("danilo@example.com"),
+                    rx.table.cell("Developer"),
+                ),
+                rx.table.row(  # Wednesday
+                    rx.table.row_header_cell("Jasper Eriksson"),
+                    rx.table.cell("jasper@example.com"),
+                    rx.table.cell("Developer"),
+                ),
+                rx.table.row(  # Thursday
+                    rx.table.row_header_cell("Jasper Eriksson"),
+                    rx.table.cell("jasper@example.com"),
+                    rx.table.cell("Developer"),
+                ),
+                rx.table.row(  # Friday
+                    rx.table.row_header_cell("Jasper Eriksson"),
+                    rx.table.cell("jasper@example.com"),
+                    rx.table.cell("Developer"),
+                ),
+                rx.table.row(  # Saturday
+                    rx.table.row_header_cell("Jasper Eriksson"),
+                    rx.table.cell("jasper@example.com"),
+                    rx.table.cell("Developer"),
+                ),  
+            ),
+)
+
+
 def form_select1():
     return rx.vstack(
         rx.form.root(
@@ -92,8 +145,9 @@ def form_select1():
         width="100%",
     )
 def index():
-    return rx.hstack(
-        form_select1()
+    return rx.vstack(
+        form_select1(),
+        render_table()
     )
 
 app = rx.App()

@@ -26,7 +26,11 @@ muscle_group = ["abdominals",
                 "traps",
                 "triceps"]
 
-
+params = {
+    "type": "cardio",
+    "muscle" : "bicep",
+    "difficulty": "beginner"
+}
 def muscle_exercise(muscle, *training_type):  # Returns set of exercsies related to that muscle group and training
     """
     Gives exercises to related muscle from API Ninjas, filtered by user prefered training_type
@@ -41,7 +45,7 @@ def muscle_exercise(muscle, *training_type):  # Returns set of exercsies related
                 if training_type and exercise["type"] in training_type:
                     print(json.dumps(exercise, indent=4))
                     exercises_list.append(exercise) 
-            #return {muscle: exercises_list}
+            return {muscle: exercises_list}
         else:
             print("Error:", response.status_code, response.text)
     else:
@@ -53,4 +57,4 @@ def muscle_exercise(muscle, *training_type):  # Returns set of exercsies related
 # Output: Sure thing!
 
 """
-muscle_exercise("quadriceps")
+muscle_exercise("quadriceps", "strength")

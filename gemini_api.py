@@ -11,82 +11,83 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
-load_dotenv(".env")
+def gemini(days):
+    load_dotenv(".env")
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+    GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-muscles = ["biceps",
-                "calves",
-                "chest",
-                "forearms",
-                "glutes",
-                "hamstrings",
-                "lats",
-                "lower_back",
-                "middle_back",
-                "quadriceps",
-                "traps",
-                "triceps"]
+    muscles = ["biceps",
+                    "calves",
+                    "chest",
+                    "forearms",
+                    "glutes",
+                    "hamstrings",
+                    "lats",
+                    "lower_back",
+                    "middle_back",
+                    "quadriceps",
+                    "traps",
+                    "triceps"]
 
-muscles_input = ", ".join(muscles)
+    muscles_input = ", ".join(muscles)
 
-#print(muscles_input)
-training = "power lifting"
-days = {
-    'Sunday': 0,
-    'Monday': 0,
-    'Tuesday': 0,
-    'Wednsday': 240,
-    'Thursday': 0,
-    'Friday': 0,
-    'Saturday': 0
-}
+    #print(muscles_input)
+    training = "power lifting"
+    days = {
+        'Sunday': 0,
+        'Monday': 30,
+        'Tuesday': 0,
+        'Wednsday': 0,
+        'Thursday': 0,
+        'Friday': 120,
+        'Saturday': 0
+    }
 
-import google.generativeai as genai
+    import google.generativeai as genai
 
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-pro-latest')
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel('gemini-1.5-pro-latest')
 
-# AI_PROMPT = f"""Can you create a workout routine Monday for {days['monday']} mins, 
-#             Tuesday for {days['tuesday']} mins, 
-#             Wednesday for {days['wednsday']} mins, 
-#             Thursday for {days['thursday']} mins,
-#             Friday for {days['thursday']} mins, using all these muscles groups {muscles_input} ?"""
+    # AI_PROMPT = f"""Can you create a workout routine Monday for {days['monday']} mins, 
+    #             Tuesday for {days['tuesday']} mins, 
+    #             Wednesday for {days['wednsday']} mins, 
+    #             Thursday for {days['thursday']} mins,
+    #             Friday for {days['thursday']} mins, using all these muscles groups {muscles_input} ?"""
 
-AI_PROMPT = f"""
-            You are a {training} coach, can you create a workout routine
-            Sunday for {days['Sunday']} mins, 
-            Monday for {days['Monday']} mins, 
-            Tuesday for {days['Tuesday']} mins, 
-            Wednesday for {days['Wednsday']} mins, 
-            Thursday for {days['Thursday']} mins,
-            Friday for {days['Friday']} mins,
-            Saturday for {days['Saturday']} mins, using only these muscles groups {muscles_input}?
-            It's important to include rest periods between sets in the calculation
-            to ensure that the total workout duration does not exceed the allotted time for each day.
-            For instance, if Tuesday has 10 minutes available, and assuming each set takes about 1 minute
-            followed by a rest period of around 1 to 2 minutes, the routine should realistically include only a limited number of exercises and sets.
-            Also, it's important to try and hit every muscle group in {muscles_input} in the week, if the training is not cardio.
-            Prioritze adding compound exercises over accessory exercises while still respecting the time allocated.
-            For the output it should be a json dictionary with 7 rows, each row representing a day in {days.keys()}. Based
-            on the day, each row will start with the muscle group involved followed by the series of exercises corresponding to that day and availability,.
-            Each exercise will be in the format of: {{Muscle Group: {{Exercise Name: X Sets of Y Reps}}}}. 
-            For example, row 1 would represent Sunday and if Sunday is not 0 minutes, the row could possibly look like this:
-            Muscle Group A: {{Exercise 1 Name Targeting Muscle Group A: X Sets of Y Reps, Exercise 2 Name Targeting Muscle Group A: X Sets of Y Reps}},
-            Muscle Group B: {{Exercise 3 Name Targeting Muscle Group B: X Sets of Y Reps}}, . . . , Exercise N Name: X Sets of Y Reps
-            However, if row 1 reprsents Sunday and Sunday is 0 minutes, the row will look like this:
-            {{}}, which is an empty dictionary.
-            """
-try:
-    response = model.generate_content(AI_PROMPT)
-except:
-    print("Please Try Again.")
+    AI_PROMPT = f"""
+                You are a {training} coach, can you create a workout routine
+                Sunday for {days['Sunday']} mins, 
+                Monday for {days['Monday']} mins, 
+                Tuesday for {days['Tuesday']} mins, 
+                Wednesday for {days['Wednsday']} mins, 
+                Thursday for {days['Thursday']} mins,
+                Friday for {days['Friday']} mins,
+                Saturday for {days['Saturday']} mins, using only these muscles groups {muscles_input}?
+                It's important to include rest periods between sets in the calculation
+                to ensure that the total workout duration does not exceed the allotted time for each day.
+                For instance, if Tuesday has 10 minutes available, and assuming each set takes about 1 minute
+                followed by a rest period of around 1 to 2 minutes, the routine should realistically include only a limited number of exercises and sets.
+                Also, it's important to try and hit every muscle group in {muscles_input} in the week, if the training is not cardio.
+                Prioritze adding compound exercises over accessory exercises while still respecting the time allocated.
+                For the output it should be a json dictionary with 7 rows, each row representing a day in {days.keys()}. Based
+                on the day, each row will start with the muscle group involved followed by the series of exercises corresponding to that day and availability,.
+                Each exercise will be in the format of: {{Muscle Group: {{Exercise Name: X Sets of Y Reps}}}}. 
+                For example, row 1 would represent Sunday and if Sunday is not 0 minutes, the row could possibly look like this:
+                Muscle Group A: {{Exercise 1 Name Targeting Muscle Group A: X Sets of Y Reps, Exercise 2 Name Targeting Muscle Group A: X Sets of Y Reps}},
+                Muscle Group B: {{Exercise 3 Name Targeting Muscle Group B: X Sets of Y Reps}}, . . . , Exercise N Name: X Sets of Y Reps
+                However, if row 1 reprsents Sunday and Sunday is 0 minutes, the row will look like this:
+                {{}}, which is an empty dictionary.
+                """
+    try:
+        response = model.generate_content(AI_PROMPT)
+    except:
+        print("Please Try Again.")
 
-#print(response.text)
-#print("done")
+    #print(response.text)
+    #print("done")
 
-with open('results.txt', 'w', encoding="utf-8") as file:
-    gemini_output = response.text
-    print(gemini_output)
-    print("done")
-    file.write(gemini_output)
+    with open('results.txt', 'w', encoding="utf-8") as file:
+        gemini_output = response.text
+        print(gemini_output)
+        print("done")
+        file.write(gemini_output)

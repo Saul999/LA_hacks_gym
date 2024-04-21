@@ -35,9 +35,9 @@ training = "power lifting"
 days = {
     'Sunday': 0,
     'Monday': 0,
-    'Tuesday': 120,
-    'Wednsday': 0,
-    'Thursday': 120,
+    'Tuesday': 0,
+    'Wednsday': 240,
+    'Thursday': 0,
     'Friday': 0,
     'Saturday': 0
 }
@@ -62,14 +62,25 @@ AI_PROMPT = f"""
             Thursday for {days['Thursday']} mins,
             Friday for {days['Friday']} mins,
             Saturday for {days['Saturday']} mins, using only these muscles groups {muscles_input}?
-            For the output, there will be 7 rows, with each row representing a day in {days.keys()}. Based
-            on the day, each row will have a series of exercises corresponding to that day and availability.
-            Each exercise will be in the format of: Exercise Name: X Sets of Y Reps. 
+            It's important to include rest periods between sets in the calculation
+            to ensure that the total workout duration does not exceed the allotted time for each day.
+            For instance, if Tuesday has 10 minutes available, and assuming each set takes about 1 minute
+            followed by a rest period of around 1 to 2 minutes, the routine should realistically include only a limited number of exercises and sets.
+            Also, it's important to try and hit every muscle group in {muscles_input} in the week, if the training is not cardio.
+            Prioritze adding compound exercises over accessory exercises while still respecting the time allocated.
+            For the output it should be a json dictionary with 7 rows, each row representing a day in {days.keys()}. Based
+            on the day, each row will start with the muscle group involved followed by the series of exercises corresponding to that day and availability,.
+            Each exercise will be in the format of: {{Muscle Group: {{Exercise Name: X Sets of Y Reps}}}}. 
             For example, row 1 would represent Sunday and if Sunday is not 0 minutes, the row could possibly look like this:
-            Exercise 1 Name: X Sets of Y Reps, Exercise 2 Name: X Sets of Y Reps, . . . , Exercise N Name: X Sets of Y Reps
+            Muscle Group A: {{Exercise 1 Name Targeting Muscle Group A: X Sets of Y Reps, Exercise 2 Name Targeting Muscle Group A: X Sets of Y Reps}},
+            Muscle Group B: {{Exercise 3 Name Targeting Muscle Group B: X Sets of Y Reps}}, . . . , Exercise N Name: X Sets of Y Reps
+            However, if row 1 reprsents Sunday and Sunday is 0 minutes, the row will look like this:
+            {{}}, which is an empty dictionary.
             """
-
-response = model.generate_content(AI_PROMPT)
+try:
+    response = model.generate_content(AI_PROMPT)
+except:
+    print("Please Try Again.")
 
 #print(response.text)
 #print("done")

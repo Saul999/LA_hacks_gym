@@ -54,12 +54,14 @@ model = genai.GenerativeModel('gemini-1.5-pro-latest')
 #             Friday for {days['thursday']} mins, using all these muscles groups {muscles_input} ?"""
 
 AI_PROMPT = f"""
-            You are a {training} coach, can you create a workout routine 
+            You are a {training} coach, can you create a workout routine
+            Sunday for {days['Sunday']} mins, 
             Monday for {days['Monday']} mins, 
             Tuesday for {days['Tuesday']} mins, 
             Wednesday for {days['Wednsday']} mins, 
             Thursday for {days['Thursday']} mins,
-            Friday for {days['Friday']} mins, using only these muscles groups {muscles_input}?
+            Friday for {days['Friday']} mins,
+            Saturday for {days['Saturday']} mins, using only these muscles groups {muscles_input}?
             For the output, there will be 7 rows, with each row representing a day in {days.keys()}. Based
             on the day, each row will have a series of exercises corresponding to that day and availability.
             Each exercise will be in the format of: Exercise Name: X Sets of Y Reps. 

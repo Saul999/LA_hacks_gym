@@ -14,16 +14,6 @@ import NextHead from "next/head"
 
 
 
-const pulse = keyframes`
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-`
-
-
 export function Fragment_cb5edf864ed730e6ef1545318d0da5a2 () {
   const [addEvents, connectErrors] = useContext(EventLoopContext);
 
@@ -71,6 +61,16 @@ export function Fragment_6499b51736be44284c15de43340cb16c () {
 </Fragment>
   )
 }
+
+const pulse = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
 
 export default function Component() {
   const routeNotFound = useClientSideRouting()

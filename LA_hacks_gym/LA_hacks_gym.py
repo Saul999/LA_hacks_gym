@@ -116,6 +116,7 @@ def form_select1():
                                     rx.select(
                                         ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Monday",
                                         color="pink",
@@ -127,6 +128,7 @@ def form_select1():
                                     rx.select(
                                         ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Tuesday",
                                         color="pink",
@@ -138,6 +140,7 @@ def form_select1():
                                     rx.select(
                                          ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Wednesday",
                                         color="pink",
@@ -149,6 +152,7 @@ def form_select1():
                                     rx.select(
                                          ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Thursday",
                                         color="pink",
@@ -160,6 +164,7 @@ def form_select1():
                                     rx.select(
                                          ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Friday",
                                         color="pink",
@@ -171,6 +176,7 @@ def form_select1():
                                     rx.select(
                                          ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Saturday",
                                         color="pink",
@@ -182,6 +188,7 @@ def form_select1():
                                     rx.select(
                                          ['0', '30', '60','90','120','150','180'],
                                         placeholder="Workout Session",
+                                        default_value='0',
                                         label="Times",
                                         name="Sunday",
                                         color="pink",

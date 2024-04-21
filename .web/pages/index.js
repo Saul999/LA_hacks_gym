@@ -13,28 +13,6 @@ import NextHead from "next/head"
 
 
 
-const pulse = keyframes`
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-`
-
-
-export function Text_d3386a2dc3cd115f912936e9518511bf () {
-  const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
-
-
-
-  return (
-    <RadixThemesText as={`p`}>
-  {state__form_select_state1.schedule}
-</RadixThemesText>
-  )
-}
-
 export function Fragment_cb5edf864ed730e6ef1545318d0da5a2 () {
   const [addEvents, connectErrors] = useContext(EventLoopContext);
 
@@ -83,6 +61,16 @@ export function Fragment_6499b51736be44284c15de43340cb16c () {
   )
 }
 
+const pulse = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
+
 export function Text_2fad6072c87c867e84eaee8b55e9c1d8 () {
   const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
 
@@ -95,7 +83,19 @@ export function Text_2fad6072c87c867e84eaee8b55e9c1d8 () {
   )
 }
 
-export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
+export function Text_d3386a2dc3cd115f912936e9518511bf () {
+  const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
+
+
+
+  return (
+    <RadixThemesText as={`p`}>
+  {state__form_select_state1.schedule}
+</RadixThemesText>
+  )
+}
+
+export function Root_026d6b49e9aef5bbcdc73141791f5ad6 () {
   const [addEvents, connectErrors] = useContext(EventLoopContext);
 
 
@@ -151,7 +151,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
   <RadixThemesTable.Body>
   <RadixThemesTable.Row>
   <RadixThemesTable.RowHeaderCell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Monday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Monday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -184,7 +184,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
 </RadixThemesSelect.Root>
 </RadixThemesTable.RowHeaderCell>
   <RadixThemesTable.Cell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Tuesday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Tuesday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -217,7 +217,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
 </RadixThemesSelect.Root>
 </RadixThemesTable.Cell>
   <RadixThemesTable.Cell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Wednesday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Wednesday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -250,7 +250,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
 </RadixThemesSelect.Root>
 </RadixThemesTable.Cell>
   <RadixThemesTable.Cell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Thursday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Thursday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -283,7 +283,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
 </RadixThemesSelect.Root>
 </RadixThemesTable.Cell>
   <RadixThemesTable.Cell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Friday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Friday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -316,7 +316,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
 </RadixThemesSelect.Root>
 </RadixThemesTable.Cell>
   <RadixThemesTable.Cell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Saturday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Saturday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -349,7 +349,7 @@ export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
 </RadixThemesSelect.Root>
 </RadixThemesTable.Cell>
   <RadixThemesTable.Cell>
-  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Sunday`}>
+  <RadixThemesSelect.Root css={{"color": "pink"}} defaultValue={`0`} name={`Sunday`}>
   <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
   <RadixThemesSelect.Content>
   <RadixThemesSelect.Group>
@@ -405,7 +405,7 @@ export default function Component() {
   <RadixThemesFlex css={{"background": "linear-gradient(to bottom, navy, BLACK)", "height": "100vh", "display": "flex", "alignItems": "center", "justifyContent": "center"}}>
   <RadixThemesFlex align={`center`} css={{"width": "100%", "display": "flex", "alignItems": "center", "justifyContent": "center"}} gap={`7`}>
   <RadixThemesFlex align={`center`} css={{"justifyContent": "center", "width": "100%"}} direction={`column`} gap={`2`}>
-  <Root_4aa5e17702edc5ba03d48056e9bab351/>
+  <Root_026d6b49e9aef5bbcdc73141791f5ad6/>
   <RadixThemesSeparator css={{"width": "100%"}} size={`4`}/>
   <RadixThemesHeading css={{"textAlign": "center"}}>
   {`Your Schedule:`}

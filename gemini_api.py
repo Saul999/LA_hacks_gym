@@ -8,6 +8,12 @@ Original file is located at
 """
 
 import pandas as pd
+import os
+from dotenv import load_dotenv
+
+load_dotenv(".env")
+
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 muscles = ["biceps",
                 "calves",
@@ -36,7 +42,7 @@ days = {
 
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyBWQJ6XQ8rUZlH-V2wMXTUFLbtTvqgL3zI")
+genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-pro-latest')
 
 # AI_PROMPT = f"""Can you create a workout routine Monday for {days['monday']} mins, 

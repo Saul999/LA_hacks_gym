@@ -30,14 +30,14 @@ muscles = ["biceps",
 
 muscles_input = ", ".join(muscles)
 
-print(muscles_input)
+#print(muscles_input)
 training = "power lifting"
 days = {
-    'monday':0,
-    'tuesday': 10,
-    'wednsday': 10,
-    'thursday': 10,
-    'friday': 45
+    'Monday':0,
+    'Tuesday': 120,
+    'Wednsday': 120,
+    'Thursday': 120,
+    'Friday': 45
 }
 
 import google.generativeai as genai
@@ -51,13 +51,18 @@ model = genai.GenerativeModel('gemini-1.5-pro-latest')
 #             Thursday for {days['thursday']} mins,
 #             Friday for {days['thursday']} mins, using all these muscles groups {muscles_input} ?"""
 
-AI_PROMPT = f"""You are a {training} coach, can you create a workout routine Monday for {days['monday']} mins, 
-            Tuesday for {days['tuesday']} mins, 
-            Wednesday for {days['wednsday']} mins, 
-            Thursday for {days['thursday']} mins,
-            Friday for {days['thursday']} mins, using only these muscles groups {muscles_input} ?"""
+AI_PROMPT = f"""
+            You are a {training} coach, can you create a workout routine 
+            Monday for {days['Monday']} mins, 
+            Tuesday for {days['Tuesday']} mins, 
+            Wednesday for {days['Wednsday']} mins, 
+            Thursday for {days['Thursday']} mins,
+            Friday for {days['Friday']} mins, using only these muscles groups {muscles_input}?
+            Output this data as if it were a csv file, and put this data at the very top of
+            your output. Row 0 will be {days.keys()}, and the rows after will be the exercises
+            with its respective sets and reps, and it will not include the muscle group being trained.
+            """
 
 response = model.generate_content(AI_PROMPT)
 
-type(response)
 print(response.text)

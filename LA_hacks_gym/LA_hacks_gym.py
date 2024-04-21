@@ -1,112 +1,85 @@
-"""Welcome to Reflex! This file outlines the steps to create a basic app."""
-
-from rxconfig import config
 import reflex as rx
+import os
+from gemini_api import gemini
 
-docs_url = "https://reflex.dev/docs/getting-started/introduction/"
-filename = f"{config.app_name}/{config.app_name}.py"
+dictionary_gemini = {}
+class FormSelectState1(rx.State):
+    form_data: dict = {}
 
-## top row with days
-def headerOfDays():
-    return rx.table.header(
-                rx.table.row(
-                    rx.table.column_header_cell("Monday"),
-                    rx.table.column_header_cell("Tuesday"),
-                    rx.table.column_header_cell("Wednesday"),
-                    rx.table.column_header_cell("Thursday"),
-                    rx.table.column_header_cell("Friday"),
-                    rx.table.column_header_cell("Saturday"),
-                    rx.table.column_header_cell("Sunday"),
+    def handle_submit(self, form_data: dict):
+        """Handle the form submit."""
+        global dictionary_gemini
+        self.form_data = form_data
+        dictionary_gemini = form_data
+
+
+
+def form_select1():
+    return rx.vstack(
+        rx.form.root(
+            rx.heading("Welcome to LA Hacks gym scheduler"),
+            rx.flex(
+                    rx.card("Monday", size="1"),
+                    rx.card("Tuesday", size="1"),
+                    rx.card("Wednesday", size="1"),
+                    rx.card("Thursday", size="1"),
+                    rx.card("Friday", size="1"),
+                    rx.card("Saturday", size="1"),
+                    rx.card("Sunday", size="1"),
+                    spacing="2",
+                    align_items="flex-start",
+                    flex_wrap="wrap",
                 ),
-    )
-
-## drop down to pick from time
-def timeDropDown():
-    return rx.table.cell(
-        rx.select(
-            ["0 Minutes", "30 Minutes", "45 Minutes", "60 Minutes", "90 Minutes", "120 Minutes", "150 Minutes", "180 Minutes", "210 Minutes", "240 Minutes"],
-            placeholder="Workout Sessions",
-            label="Times",
-        ),
-    ),
-
-class State(rx.State):
-    """The app state."""
-
-days_of_week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-def custom() -> rx.Component:
-    # Return the rx.image component directly
-    return rx.image(
-        src="./pixelcut-export1.png",
-        width="25%",
-        height="25%",
-    )
-
-
-
-def index() -> rx.Component:
-    return rx.center(
-            rx.vstack(
-                rx.heading("Welcome to LA HACKS gym scheduler", size="9"),
-                rx.text("What is your availability?"),
-                # Create the table structure
-                rx.table.root(
-                    headerOfDays(),
-                    rx.table.body(
-                        rx.table.row(
-                            timeDropDown(),
-                            timeDropDown(),
-                            timeDropDown(),
-                            timeDropDown(),
-                            timeDropDown(),
-                            timeDropDown(),
-                            timeDropDown(),
-                        ),
-                    )
+            rx.hstack(
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Monday",
                 ),
-                rx.button(
-                    "SUBMIT",
-                    # on_click=lambda: custom(),
-                    size="4",
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Tuesday",
                 ),
-                rx.logo(),
-                align="center",
-                spacing="7",
-                font_size="2em",
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Wednesday",
+                ),
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Thursday",
+                ),
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Friday",
+                ),
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Saturday",
+                ),
+                rx.select(
+                    ['0', '30', '60'],
+                    default_value="0",
+                    name="Sunday",
+                ),
+                rx.button("Submit", type="submit"),
+                width="100%",
             ),
-            height="100vh",
-        )
-
-
-
-
-# def index() -> rx.Component:
-
-# def pickMuscle() -> rx.Component:
-#     return rx.image(
-#         src="./pixelcut-export1.",
-#         width="100px",
-#         height="auto",
-#         border_radius="15px 50px",
-#         border="5px solid #555",
-#     )
-
-
-# def custom():
-#     return rx.text("Custom Route")
-
-# def pickMuscle() -> rx.Component:
-#         return 
-
-# app = rx.App()
-
-# app.add_page(index)
-# app.add_page(about)
-# app.add_page(custom, route="/custom-route")
-
-
-
+            on_submit=FormSelectState1.handle_submit,
+            width="100%",
+        ),
+        rx.divider(width="100%"),
+        rx.heading("Results"),
+        rx.text(FormSelectState1.form_data.to_string()),
+        width="100%",
+    )
+def index():
+    return rx.hstack(
+        form_select1(),        
+    )
 app = rx.App()
 app.add_page(index)
-app.add_page(custom)

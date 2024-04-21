@@ -33,15 +33,6 @@ def gemini(days):
 
     #print(muscles_input)
     training = "power lifting"
-    days = {
-        'Sunday': 0,
-        'Monday': 30,
-        'Tuesday': 0,
-        'Wednsday': 0,
-        'Thursday': 0,
-        'Friday': 120,
-        'Saturday': 0
-    }
 
     import google.generativeai as genai
 

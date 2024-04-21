@@ -3,6 +3,17 @@ import os
 from gemini_api import gemini
 import json
 
+def print_schedule(schedule: str):
+    json_gemini = json.loads(schedule)
+    Sunday = json_gemini["Sunday"]
+    Monday = json_gemini["Monday"]
+    Tuesday = json_gemini["Tuesday"]
+    Wednesday = json_gemini["Wednesday"]
+    Thursday = json_gemini["Thursday"]
+    Friday = json_gemini["Friday"]
+    Saturday = json_gemini["Saturday"]
+    return Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
+
 class FormSelectState1(rx.State):
     form_data: dict = {}
     schedule: str = ""
@@ -10,14 +21,11 @@ class FormSelectState1(rx.State):
     def handle_submit(self, form_data: dict):
         """Handle the form submit."""
         self.form_data = form_data
-    
         self.schedule = gemini(form_data)
+        print(print_schedule(self.schedule))
+        #print(self.schedule)
+        #print(type(self.schedule))
         # print(gemini(form_data))
-
-def print_schedule(schedule: str):
-    final = json.loads(schedule)
-    
-    return final
 
 def form_select1():
     return rx.vstack(
@@ -85,7 +93,7 @@ def form_select1():
     )
 def index():
     return rx.hstack(
-        form_select1(),    
+        form_select1()
     )
 
 app = rx.App()

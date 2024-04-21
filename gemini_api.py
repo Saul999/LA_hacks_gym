@@ -50,7 +50,7 @@ def gemini(days):
                 Sunday for {days['Sunday']} mins, 
                 Monday for {days['Monday']} mins, 
                 Tuesday for {days['Tuesday']} mins, 
-                Wednesday for {days['Wednsday']} mins, 
+                Wednesday for {days['Wednesday']} mins, 
                 Thursday for {days['Thursday']} mins,
                 Friday for {days['Friday']} mins,
                 Saturday for {days['Saturday']} mins, using only these muscles groups {muscles_input}?
@@ -71,14 +71,13 @@ def gemini(days):
                 """
     try:
         response = model.generate_content(AI_PROMPT)
+        return response.text
     except:
         print("Please Try Again.")
 
     #print(response.text)
     #print("done")
 
-    with open('results.txt', 'w', encoding="utf-8") as file:
-        gemini_output = response.text
-        print(gemini_output)
-        print("done")
-        file.write(gemini_output)
+    # with open('results.txt', 'w', encoding="utf-8") as file:
+    #     gemini_output = response.text
+    #     return gemini_output

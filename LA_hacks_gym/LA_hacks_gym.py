@@ -2,16 +2,14 @@ import reflex as rx
 import os
 from gemini_api import gemini
 
-dictionary_gemini = {}
 class FormSelectState1(rx.State):
     form_data: dict = {}
 
     def handle_submit(self, form_data: dict):
         """Handle the form submit."""
-        global dictionary_gemini
         self.form_data = form_data
-        dictionary_gemini = form_data
-
+        # self.schedule = gemini(form_data)
+        print(gemini(form_data))
 
 
 def form_select1():
@@ -79,7 +77,8 @@ def form_select1():
     )
 def index():
     return rx.hstack(
-        form_select1(),        
+        form_select1(),    
     )
+
 app = rx.App()
 app.add_page(index)

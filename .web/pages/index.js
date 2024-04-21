@@ -6,21 +6,31 @@ import { EventLoopContext, StateContexts } from "/utils/context"
 import { Event, getBackendURL, getRefValue, getRefValues, isTrue } from "/utils/state"
 import { WifiOffIcon as LucideWifiOffIcon } from "lucide-react"
 import { keyframes } from "@emotion/react"
-import { Button as RadixThemesButton, Card as RadixThemesCard, Dialog as RadixThemesDialog, Flex as RadixThemesFlex, Heading as RadixThemesHeading, Select as RadixThemesSelect, Separator as RadixThemesSeparator, Text as RadixThemesText } from "@radix-ui/themes"
+import { Button as RadixThemesButton, Dialog as RadixThemesDialog, Flex as RadixThemesFlex, Heading as RadixThemesHeading, Select as RadixThemesSelect, Separator as RadixThemesSeparator, Table as RadixThemesTable, Text as RadixThemesText } from "@radix-ui/themes"
 import env from "/env.json"
 import { Root as RadixFormRoot } from "@radix-ui/react-form"
 import NextHead from "next/head"
 
 
 
-export function Text_2fad6072c87c867e84eaee8b55e9c1d8 () {
+const pulse = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
+
+export function Text_d3386a2dc3cd115f912936e9518511bf () {
   const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
 
 
 
   return (
     <RadixThemesText as={`p`}>
-  {JSON.stringify(state__form_select_state1.form_data)}
+  {state__form_select_state1.schedule}
 </RadixThemesText>
   )
 }
@@ -73,7 +83,19 @@ export function Fragment_6499b51736be44284c15de43340cb16c () {
   )
 }
 
-export function Root_d81ebc19ad7a394e00ce4b9ef134efd0 () {
+export function Text_2fad6072c87c867e84eaee8b55e9c1d8 () {
+  const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
+
+
+
+  return (
+    <RadixThemesText as={`p`}>
+  {JSON.stringify(state__form_select_state1.form_data)}
+</RadixThemesText>
+  )
+}
+
+export function Root_4aa5e17702edc5ba03d48056e9bab351 () {
   const [addEvents, connectErrors] = useContext(EventLoopContext);
 
 
@@ -92,182 +114,283 @@ export function Root_d81ebc19ad7a394e00ce4b9ef134efd0 () {
     
 
   return (
-    <RadixFormRoot className={`Root`} css={{"width": "100%"}} onSubmit={handleSubmit_a53db8dfae7bfbeebb5115068b4fb688}>
-  <RadixThemesHeading>
-  {`Welcome to LA Hacks gym scheduler`}
+    <RadixFormRoot className={`Root`} css={{"align": "center", "width": "100%"}} onSubmit={handleSubmit_a53db8dfae7bfbeebb5115068b4fb688}>
+  <RadixThemesHeading css={{"textAlign": "center", "fontSize": "5em", "marginBottom": "2rem", "color": "white"}}>
+  {`Welcome to IntelliFit`}
 </RadixThemesHeading>
-  <RadixThemesFlex css={{"alignItems": "flex-start", "flexWrap": "wrap"}} gap={`2`}>
-  <RadixThemesCard size={`1`}>
+  <RadixThemesHeading css={{"textAlign": "center", "fontSize": "3em", "marginBottom": "2rem", "color": "white"}}>
+  {`Please enter your availabilty`}
+</RadixThemesHeading>
+  <RadixThemesFlex css={{"justifyContent": "center", "alignItems": "flex-start", "flexWrap": "wrap"}} gap={`9`}>
+  <RadixThemesTable.Root>
+  <RadixThemesTable.Header>
+  <RadixThemesTable.Row>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Monday`}
-</RadixThemesCard>
-  <RadixThemesCard size={`1`}>
+</RadixThemesTable.ColumnHeaderCell>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Tuesday`}
-</RadixThemesCard>
-  <RadixThemesCard size={`1`}>
+</RadixThemesTable.ColumnHeaderCell>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Wednesday`}
-</RadixThemesCard>
-  <RadixThemesCard size={`1`}>
+</RadixThemesTable.ColumnHeaderCell>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Thursday`}
-</RadixThemesCard>
-  <RadixThemesCard size={`1`}>
+</RadixThemesTable.ColumnHeaderCell>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Friday`}
-</RadixThemesCard>
-  <RadixThemesCard size={`1`}>
+</RadixThemesTable.ColumnHeaderCell>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Saturday`}
-</RadixThemesCard>
-  <RadixThemesCard size={`1`}>
+</RadixThemesTable.ColumnHeaderCell>
+  <RadixThemesTable.ColumnHeaderCell>
   {`Sunday`}
-</RadixThemesCard>
+</RadixThemesTable.ColumnHeaderCell>
+</RadixThemesTable.Row>
+</RadixThemesTable.Header>
+  <RadixThemesTable.Body>
+  <RadixThemesTable.Row>
+  <RadixThemesTable.RowHeaderCell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Monday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.RowHeaderCell>
+  <RadixThemesTable.Cell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Tuesday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.Cell>
+  <RadixThemesTable.Cell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Wednesday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.Cell>
+  <RadixThemesTable.Cell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Thursday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.Cell>
+  <RadixThemesTable.Cell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Friday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.Cell>
+  <RadixThemesTable.Cell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Saturday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.Cell>
+  <RadixThemesTable.Cell>
+  <RadixThemesSelect.Root css={{"color": "pink"}} name={`Sunday`}>
+  <RadixThemesSelect.Trigger placeholder={`Workout Session`} radius={`full`} variant={`soft`}/>
+  <RadixThemesSelect.Content>
+  <RadixThemesSelect.Group>
+  <RadixThemesSelect.Label>
+  {`Times`}
+</RadixThemesSelect.Label>
+  <RadixThemesSelect.Item value={`0`}>
+  {`0`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`30`}>
+  {`30`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`60`}>
+  {`60`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`90`}>
+  {`90`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`120`}>
+  {`120`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`150`}>
+  {`150`}
+</RadixThemesSelect.Item>
+  <RadixThemesSelect.Item value={`180`}>
+  {`180`}
+</RadixThemesSelect.Item>
+</RadixThemesSelect.Group>
+</RadixThemesSelect.Content>
+</RadixThemesSelect.Root>
+</RadixThemesTable.Cell>
+</RadixThemesTable.Row>
+</RadixThemesTable.Body>
+</RadixThemesTable.Root>
 </RadixThemesFlex>
-  <RadixThemesFlex align={`start`} css={{"width": "100%"}} direction={`row`} gap={`2`}>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Monday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Tuesday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Wednesday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Thursday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Friday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Saturday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesSelect.Root defaultValue={`0`} name={`Sunday`}>
-  <RadixThemesSelect.Trigger/>
-  <RadixThemesSelect.Content>
-  <RadixThemesSelect.Group>
-  {``}
-  <RadixThemesSelect.Item value={`0`}>
-  {`0`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`30`}>
-  {`30`}
-</RadixThemesSelect.Item>
-  <RadixThemesSelect.Item value={`60`}>
-  {`60`}
-</RadixThemesSelect.Item>
-</RadixThemesSelect.Group>
-</RadixThemesSelect.Content>
-</RadixThemesSelect.Root>
-  <RadixThemesButton type={`submit`}>
+  <RadixThemesButton css={{"margin": "0 auto", "display": "block", "align": "center", "justifyContent": "center"}} type={`submit`}>
   {`Submit`}
 </RadixThemesButton>
-</RadixThemesFlex>
 </RadixFormRoot>
   )
 }
-
-export function Text_d3386a2dc3cd115f912936e9518511bf () {
-  const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
-
-
-
-  return (
-    <RadixThemesText as={`p`}>
-  {state__form_select_state1.schedule}
-</RadixThemesText>
-  )
-}
-
-const pulse = keyframes`
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-`
-
 
 export default function Component() {
 
@@ -279,15 +402,17 @@ export default function Component() {
 </div>
   <Fragment_6499b51736be44284c15de43340cb16c/>
 </Fragment>
-  <RadixThemesFlex align={`start`} direction={`row`} gap={`2`}>
-  <RadixThemesFlex align={`start`} css={{"width": "100%"}} direction={`column`} gap={`2`}>
-  <Root_d81ebc19ad7a394e00ce4b9ef134efd0/>
+  <RadixThemesFlex css={{"background": "linear-gradient(to bottom, navy, BLACK)", "height": "100vh", "display": "flex", "alignItems": "center", "justifyContent": "center"}}>
+  <RadixThemesFlex align={`center`} css={{"width": "100%", "display": "flex", "alignItems": "center", "justifyContent": "center"}} gap={`7`}>
+  <RadixThemesFlex align={`center`} css={{"justifyContent": "center", "width": "100%"}} direction={`column`} gap={`2`}>
+  <Root_4aa5e17702edc5ba03d48056e9bab351/>
   <RadixThemesSeparator css={{"width": "100%"}} size={`4`}/>
-  <RadixThemesHeading>
-  {`Results`}
+  <RadixThemesHeading css={{"textAlign": "center"}}>
+  {`Your Schedule:`}
 </RadixThemesHeading>
   <Text_2fad6072c87c867e84eaee8b55e9c1d8/>
   <Text_d3386a2dc3cd115f912936e9518511bf/>
+</RadixThemesFlex>
 </RadixThemesFlex>
 </RadixThemesFlex>
   <NextHead>

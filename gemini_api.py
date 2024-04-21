@@ -75,6 +75,9 @@ def gemini(days):
         response = response.text
         response = response.replace("```json","")
         response = response.replace("```","")
+        response = response.replace("{","")
+        response = response.replace("}","")
+        response = response.replace("\"","")
         return response
     except:
         print("Please Try Again.")

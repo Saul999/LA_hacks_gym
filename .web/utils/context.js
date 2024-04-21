@@ -3,7 +3,7 @@ import { applyDelta, Event, hydrateClientStorage, useEventLoop, refs } from "/ut
 
 export const initialState = {"state": {"is_hydrated": false, "router": {"session": {"client_token": "", "client_ip": "", "session_id": ""}, "headers": {"host": "", "origin": "", "upgrade": "", "connection": "", "pragma": "", "cache_control": "", "user_agent": "", "sec_websocket_version": "", "sec_websocket_key": "", "sec_websocket_extensions": "", "accept_encoding": "", "accept_language": ""}, "page": {"host": "", "path": "", "raw_path": "", "full_path": "", "full_raw_path": "", "params": {}}}}, "state.on_load_internal_state": {}, "state.update_vars_internal_state": {}, "state.form_select_state1": {"form_data": {}, "schedule": ""}}
 
-export const defaultColorMode = "light"
+export const defaultColorMode = "dark"
 export const ColorModeContext = createContext(null);
 export const UploadFilesContext = createContext(null);
 export const DispatchContext = createContext(null);

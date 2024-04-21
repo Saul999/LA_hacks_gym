@@ -1,2 +1,6 @@
-.env
+*.db
+*.py[cod]
 *.txt
+.env
+.web
+__pycache__/

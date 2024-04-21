@@ -1,16 +1,23 @@
 import reflex as rx
 import os
 from gemini_api import gemini
+import json
 
 class FormSelectState1(rx.State):
     form_data: dict = {}
+    schedule: str = ""
 
     def handle_submit(self, form_data: dict):
         """Handle the form submit."""
         self.form_data = form_data
-        # self.schedule = gemini(form_data)
-        print(gemini(form_data))
+    
+        self.schedule = gemini(form_data)
+        # print(gemini(form_data))
 
+def print_schedule(schedule: str):
+    final = json.loads(schedule)
+    
+    return final
 
 def form_select1():
     return rx.vstack(
@@ -73,6 +80,7 @@ def form_select1():
         rx.divider(width="100%"),
         rx.heading("Results"),
         rx.text(FormSelectState1.form_data.to_string()),
+        rx.text(FormSelectState1.schedule),
         width="100%",
     )
 def index():

@@ -10,6 +10,7 @@ Original file is located at
 import pandas as pd
 import os
 from dotenv import load_dotenv
+import json 
 
 def gemini(days):
     load_dotenv(".env")
@@ -71,7 +72,10 @@ def gemini(days):
                 """
     try:
         response = model.generate_content(AI_PROMPT)
-        return response.text
+        response = response.text
+        response = response.replace("```json","")
+        response = response.replace("```","")
+        return response
     except:
         print("Please Try Again.")
 

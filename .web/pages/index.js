@@ -13,6 +13,36 @@ import NextHead from "next/head"
 
 
 
+export function Text_2fad6072c87c867e84eaee8b55e9c1d8 () {
+  const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
+
+
+
+  return (
+    <RadixThemesText as={`p`}>
+  {JSON.stringify(state__form_select_state1.form_data)}
+</RadixThemesText>
+  )
+}
+
+export function Fragment_cb5edf864ed730e6ef1545318d0da5a2 () {
+  const [addEvents, connectErrors] = useContext(EventLoopContext);
+
+
+
+  return (
+    <Fragment>
+  {isTrue(connectErrors.length > 0) ? (
+  <Fragment>
+  <LucideWifiOffIcon css={{"color": "crimson", "zIndex": 9999, "position": "fixed", "bottom": "30px", "right": "30px", "animation": `${pulse} 1s infinite`}} size={32}/>
+</Fragment>
+) : (
+  <Fragment/>
+)}
+</Fragment>
+  )
+}
+
 export function Fragment_6499b51736be44284c15de43340cb16c () {
   const [addEvents, connectErrors] = useContext(EventLoopContext);
 
@@ -35,34 +65,6 @@ export function Fragment_6499b51736be44284c15de43340cb16c () {
 </RadixThemesText>
 </RadixThemesDialog.Content>
 </RadixThemesDialog.Root>
-</Fragment>
-) : (
-  <Fragment/>
-)}
-</Fragment>
-  )
-}
-
-const pulse = keyframes`
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-`
-
-
-export function Fragment_cb5edf864ed730e6ef1545318d0da5a2 () {
-  const [addEvents, connectErrors] = useContext(EventLoopContext);
-
-
-
-  return (
-    <Fragment>
-  {isTrue(connectErrors.length > 0) ? (
-  <Fragment>
-  <LucideWifiOffIcon css={{"color": "crimson", "zIndex": 9999, "position": "fixed", "bottom": "30px", "right": "30px", "animation": `${pulse} 1s infinite`}} size={32}/>
 </Fragment>
 ) : (
   <Fragment/>
@@ -245,17 +247,27 @@ export function Root_d81ebc19ad7a394e00ce4b9ef134efd0 () {
   )
 }
 
-export function Text_2fad6072c87c867e84eaee8b55e9c1d8 () {
+export function Text_d3386a2dc3cd115f912936e9518511bf () {
   const state__form_select_state1 = useContext(StateContexts.state__form_select_state1)
 
 
 
   return (
     <RadixThemesText as={`p`}>
-  {JSON.stringify(state__form_select_state1.form_data)}
+  {state__form_select_state1.schedule}
 </RadixThemesText>
   )
 }
+
+const pulse = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`
+
 
 export default function Component() {
 
@@ -275,6 +287,7 @@ export default function Component() {
   {`Results`}
 </RadixThemesHeading>
   <Text_2fad6072c87c867e84eaee8b55e9c1d8/>
+  <Text_d3386a2dc3cd115f912936e9518511bf/>
 </RadixThemesFlex>
 </RadixThemesFlex>
   <NextHead>
